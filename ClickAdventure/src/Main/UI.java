@@ -23,7 +23,8 @@ public class UI {
 		this.gm = gm;
 
 		createMainField();
-		createBackground();
+
+		generateScreen();
 
 		window.setVisible(true);
 	}
@@ -47,21 +48,40 @@ public class UI {
 		window.add(messageText);
 	}
 
-	public void createBackground() {
+	public void createBackground(int bgNum, String bgFileName) {
 
-		bgPanel[1] = new JPanel();
-		bgPanel[1].setBounds(50,50,700,350);
-		bgPanel[1].setBackground(Color.blue);
-		bgPanel[1].setLayout(null);
+		bgPanel[bgNum] = new JPanel();
+		bgPanel[bgNum].setBounds(50,50,700,350);
+		bgPanel[bgNum].setBackground(Color.blue);
+		bgPanel[bgNum].setLayout(null);
 		window.add(bgPanel[1]);
 
-		bgLabel[1] = new JLabel();
-		bgLabel[1].setBounds(0,0,700,350);
+		bgLabel[bgNum] = new JLabel();
+		bgLabel[bgNum].setBounds(0,0,700,350);
 
-		ImageIcon bgIcon = new ImageIcon(getClass().getClassLoader().getResource("Room1-View1.png"));
-		bgLabel[1].setIcon(bgIcon);
+		ImageIcon bgIcon = new ImageIcon(getClass().getClassLoader().getResource(bgFileName));
+		bgLabel[bgNum].setIcon(bgIcon);
 
-		bgPanel[1].add(bgLabel[1]);
+
+	}
+
+	public void createObject(int bgNum, int objx, int objy, int objWidth, int objHeight, String objFileName) {
+
+		JLabel objectLabel = new JLabel();
+		objectLabel.setBounds(objx,objy,objWidth,objHeight);
+
+		ImageIcon objectIcon = new ImageIcon(getClass().getClassLoader().getResource(objFileName));
+		objectLabel.setIcon(objectIcon);
+
+		bgPanel[bgNum].add(objectLabel);
+		bgPanel[bgNum].add(bgLabel[bgNum]);
+	}
+
+	public void generateScreen() {
+
+		//SCREEN 1
+		createBackground(1,"Hall1.png");
+		createObject(1,0,0,700,350,"LeftArrow_Hall1.png");
 	}
 
 }
