@@ -3,6 +3,7 @@ package Main;
 import java.awt.Color;
 import java.awt.Font;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -57,7 +58,10 @@ public class UI {
 		bgLabel[1] = new JLabel();
 		bgLabel[1].setBounds(0,0,700,350);
 
+		ImageIcon bgIcon = new ImageIcon(getClass().getClassLoader().getResource("Room1-View1.png"));
+		bgLabel[1].setIcon(bgIcon);
 
+		bgPanel[1].add(bgLabel[1]);
 	}
 
 }
