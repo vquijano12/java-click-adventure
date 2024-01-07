@@ -1,14 +1,18 @@
 package Main;
 
 import java.awt.Color;
+import java.awt.Font;
 
 import javax.swing.JFrame;
+import javax.swing.JTextArea;
 
 public class UI {
 
 	GameManager gm;
 
 	JFrame window;
+
+	public JTextArea messageText;
 
 	public UI(GameManager gm) {
 
@@ -27,6 +31,15 @@ public class UI {
 		window.getContentPane().setBackground(Color.black);
 		window.setLayout(null);
 
+		messageText = new JTextArea("THIS IS SAMPLE TEXT");
+		messageText.setBounds(50,400,700,150);
+		messageText.setBackground(Color.blue);
+		messageText.setForeground(Color.white);
+		messageText.setEditable(false);
+		messageText.setLineWrap(true);
+		messageText.setWrapStyleWord(true);
+		messageText.setFont(new Font("Book Antiqua", Font.PLAIN, 26));
+		window.add(messageText);
 	}
 
 }
