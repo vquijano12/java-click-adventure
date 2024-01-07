@@ -33,7 +33,7 @@ public class UI {
 
 		messageText = new JTextArea("THIS IS SAMPLE TEXT");
 		messageText.setBounds(50,400,700,150);
-		messageText.setBackground(Color.blue);
+		messageText.setBackground(Color.black);
 		messageText.setForeground(Color.white);
 		messageText.setEditable(false);
 		messageText.setLineWrap(true);
