@@ -17,9 +17,9 @@ public class ActionHandler implements ActionListener{
 		String yourChoice = e.getActionCommand();
 		
 		switch(yourChoice) {
-		case "Placeholder1": gm.ui.messageText.setText("Placeholder text1"); break;
-		case "Placeholder2": gm.ui.messageText.setText("Placeholder text2"); break;
-		case "Placeholder3": gm.ui.messageText.setText("Placeholder text3"); break;
+		case "Placeholder1": gm.ev1.Placeholder1(); break;
+		case "Placeholder2": gm.ev1.Placeholder2(); break;
+		case "Placeholder3": gm.ev1.Placeholder3(); break;
 		}
 	}
 
