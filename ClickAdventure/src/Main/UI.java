@@ -81,7 +81,7 @@ public class UI {
 
 		//SCREEN 1
 		createBackground(1,"Hall1.png");
-		createObject(1,0,0,700,350,"LeftArrow_Hall1.png");
+		createObject(1,140,200,50,39,"LeftArrow-Hall1.png");
 	}
 
 }
