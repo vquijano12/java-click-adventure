@@ -6,6 +6,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
@@ -117,14 +118,33 @@ public class UI {
 		});
 
 		bgPanel[bgNum].add(objectLabel);
-		bgPanel[bgNum].add(bgLabel[bgNum]);
+		
+	}
+	
+	public void createArrowButton(int bgNum, int x, int y, int width, int height, String arrowFileName, String command) {
+		
+		ImageIcon arrowIcon = new ImageIcon(getClass().getClassLoader().getResource(arrowFileName));
+		
+		JButton arrowButton = new JButton();
+		arrowButton.setBounds(x, y, width, height);
+		arrowButton.setBackground(null);
+		arrowButton.setContentAreaFilled(false);
+		arrowButton.setFocusPainted(false);
+		arrowButton.setIcon(arrowIcon);
+		arrowButton.addActionListener(gm.aHandler);
+		arrowButton.setActionCommand(command);
+		arrowButton.setBorderPainted(false);
+		
+		bgPanel[bgNum].add(arrowButton);
 	}
 
 	public void generateScreen() {
 
-		//SCREEN 1
+		//SCENE 1
 		createBackground(1,"Hall1.png");
-		createObject(1,0,0,50,39,"BackArrow-Room1.png", "Placeholder", "Placeholder", "Placeholder", "Placeholder1", "Placeholder2", "Placeholder3");
+		createObject(1,0,0,50,39,"", "Placeholder", "Placeholder", "Placeholder", "Placeholder1", "Placeholder2", "Placeholder3");
+		createArrowButton(1,140,200,50,39,"LeftArrow-Hall1.png","goScene2");
+		bgPanel[1].add(bgLabel[1]);
 	}
 
 }
