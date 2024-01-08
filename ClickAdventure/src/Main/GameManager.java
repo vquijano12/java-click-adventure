@@ -17,7 +17,7 @@ public class GameManager {
 	}
 	public GameManager() {
 		
-		sChanger.showScene1();
+		sChanger.showScene3();
 	}
 
 }

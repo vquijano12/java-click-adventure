@@ -11,16 +11,16 @@ public class Event01 {
 		this.gm = gm;
 	}
 	
-	public void Placeholder1() {
-		gm.ui.messageText.setText("Placeholder text1");
+	public void lookBookcase() {
+		gm.ui.messageText.setText("Nice lookin' bookcase, I guess.");
 	}
 	
-	public void Placeholder2() {
-		gm.ui.messageText.setText("Placeholder text2");
+	public void examineBookcase() {
+		gm.ui.messageText.setText("Something feels a little off about this...");
 	}
 	
-	public void Placeholder3() {
-		gm.ui.messageText.setText("Placeholder text3");
+	public void punchBookcase() {
+		gm.ui.messageText.setText("OUCH!! That's one tough bookcase, better be careful.");
 	}
 
 }

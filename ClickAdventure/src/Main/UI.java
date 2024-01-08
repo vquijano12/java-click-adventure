@@ -46,7 +46,7 @@ public class UI {
 		window.setLayout(null);
 
 		messageText = new JTextArea("THIS IS SAMPLE TEXT");
-		messageText.setBounds(50,400,700,150);
+		messageText.setBounds(50,405,700,150);
 		messageText.setBackground(Color.black);
 		messageText.setForeground(Color.white);
 		messageText.setEditable(false);
@@ -138,10 +138,12 @@ public class UI {
 		bgPanel[bgNum].add(viewChangeButton);
 	}
 	
-	public void createArrowButton(int bgNum, int x, int y, int width, int height, String arrowFileName, String command, int newWidth, int newHeight) {
+	public void createArrowButton(int bgNum, int x, int y, int width, int height, String arrowFileName, String command, int newWidth) {
 	    ImageIcon arrowIcon = new ImageIcon(getClass().getClassLoader().getResource(arrowFileName));
 
 	    Image originalImage = arrowIcon.getImage();
+	    
+	    int newHeight = (int) (((double) originalImage.getHeight(null) / originalImage.getWidth(null)) * newWidth);
 
 	    Image scaledImage = originalImage.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
 
@@ -175,7 +177,6 @@ public class UI {
 
 	    bgPanel[bgNum].add(arrowButton);
 	}
-
 
 //	public void createArrowButton(int bgNum, int x, int y, int width, int height, String arrowFileName, String command, 
 //			int newWidth, int newHeight) {
@@ -221,19 +222,20 @@ public class UI {
 
 		//SCENE 1
 		createBackground(1,"Hall1.png");
-		createObject(1,0,0,50,39,"", "Placeholder", "Placeholder", "Placeholder", "Placeholder1", "Placeholder2", "Placeholder3");
-		createArrowButton(1,140,215,100,100,"LeftArrow-Hall1.png","goScene2", 100,60);
-		createArrowButton(1,370,150,50,39,"LeftArrow-Hall1.png","",50,35);
+//		createObject(1,0,0,50,39,"", "Choice1", "Choice2", "Choice3", "Response1", "Repsonse2", "Response3");
+		createArrowButton(1,140,190,100,100,"LeftArrow-Hall1.png","goScene2",70);
+		createArrowButton(1,370,146,50,39,"LeftArrow-Hall1.png","",39);
 		bgPanel[1].add(bgLabel[1]);
 
 		//SCENE 2
 		createBackground(2,"Room1-View1.png");
-		createArrowButton(2,310,300,50,39,"BackArrow-Room1.png","goScene1",50,39);
+		createArrowButton(2,310,300,50,39,"BackArrow-Room1.png","goScene1",50);
 		createViewChangeButton(2,600,20,50,50,"SwitchViewArrow.png","goScene3");
 		bgPanel[2].add(bgLabel[2]);
 
 		//SCENE 3
 		createBackground(3,"Room1-View2.png");
+		createObject(3,340,110,160,180,"","Look","Examine","Punch","lookBookcase","examineBookcase","punchBookcase");
 		createViewChangeButton(3,600,20,50,50,"SwitchViewArrow.png","goScene2");
 		bgPanel[3].add(bgLabel[3]);
 	}
