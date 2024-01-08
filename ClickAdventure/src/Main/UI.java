@@ -2,12 +2,17 @@ package Main;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
 import javax.swing.JTextArea;
+import javax.swing.SwingUtilities;
 
 public class UI {
 
@@ -65,13 +70,51 @@ public class UI {
 
 	}
 
-	public void createObject(int bgNum, int objx, int objy, int objWidth, int objHeight, String objFileName) {
+	public void createObject(int bgNum, int objx, int objy, int objWidth, int objHeight, String objFileName,
+			String choice1Name, String choice2Name, String choice3Name, String choice1Command, String choice2Command, String choice3Command) {
+		
+		//CREATE POP MENU
+		JPopupMenu popMenu = new JPopupMenu();
+		//CREATE POP MENU ITEMS
+		JMenuItem menuItem[] = new JMenuItem[4];
+		menuItem[1] = new JMenuItem(choice1Name);
+		menuItem[1].addActionListener(gm.aHandler);
+		menuItem[1].setActionCommand(choice1Command);
+		popMenu.add(menuItem[1]);
 
+		menuItem[2] = new JMenuItem(choice2Name);
+		menuItem[2].addActionListener(gm.aHandler);
+		menuItem[2].setActionCommand(choice2Command);
+		popMenu.add(menuItem[2]);
+		
+		menuItem[3] = new JMenuItem(choice3Name);
+		menuItem[3].addActionListener(gm.aHandler);
+		menuItem[3].setActionCommand(choice3Command);
+		popMenu.add(menuItem[3]);
+
+		//CREATE OBJECTS
 		JLabel objectLabel = new JLabel();
 		objectLabel.setBounds(objx,objy,objWidth,objHeight);
 
 		ImageIcon objectIcon = new ImageIcon(getClass().getClassLoader().getResource(objFileName));
 		objectLabel.setIcon(objectIcon);
+		
+		objectLabel.addMouseListener(new MouseListener() {
+
+			
+			public void mouseClicked(MouseEvent e) {}
+			public void mouseEntered(MouseEvent e) {}
+			public void mouseExited(MouseEvent e) {}
+			public void mousePressed(MouseEvent e) {
+				
+				if(SwingUtilities.isRightMouseButton(e)) {
+					popMenu.show(objectLabel, e.getX(), e.getY());
+				}
+			}
+
+			
+			public void mouseReleased(MouseEvent e) {}
+		});
 
 		bgPanel[bgNum].add(objectLabel);
 		bgPanel[bgNum].add(bgLabel[bgNum]);
@@ -81,7 +124,7 @@ public class UI {
 
 		//SCREEN 1
 		createBackground(1,"Hall1.png");
-		createObject(1,140,200,50,39,"LeftArrow-Hall1.png");
+		createObject(1,0,0,50,39,"BackArrow-Room1.png", "Placeholder", "Placeholder", "Placeholder", "Placeholder1", "Placeholder2", "Placeholder3");
 	}
 
 }
