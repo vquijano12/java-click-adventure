@@ -2,6 +2,7 @@ package Main;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -73,7 +74,7 @@ public class UI {
 
 	public void createObject(int bgNum, int objx, int objy, int objWidth, int objHeight, String objFileName,
 			String choice1Name, String choice2Name, String choice3Name, String choice1Command, String choice2Command, String choice3Command) {
-		
+
 		//CREATE POP MENU
 		JPopupMenu popMenu = new JPopupMenu();
 		//CREATE POP MENU ITEMS
@@ -87,7 +88,7 @@ public class UI {
 		menuItem[2].addActionListener(gm.aHandler);
 		menuItem[2].setActionCommand(choice2Command);
 		popMenu.add(menuItem[2]);
-		
+
 		menuItem[3] = new JMenuItem(choice3Name);
 		menuItem[3].addActionListener(gm.aHandler);
 		menuItem[3].setActionCommand(choice3Command);
@@ -99,53 +100,71 @@ public class UI {
 
 		ImageIcon objectIcon = new ImageIcon(getClass().getClassLoader().getResource(objFileName));
 		objectLabel.setIcon(objectIcon);
-		
+
 		objectLabel.addMouseListener(new MouseListener() {
 
-			
+
 			public void mouseClicked(MouseEvent e) {}
 			public void mouseEntered(MouseEvent e) {}
 			public void mouseExited(MouseEvent e) {}
 			public void mousePressed(MouseEvent e) {
-				
+
 				if(SwingUtilities.isRightMouseButton(e)) {
 					popMenu.show(objectLabel, e.getX(), e.getY());
 				}
 			}
 
-			
+
 			public void mouseReleased(MouseEvent e) {}
 		});
 
 		bgPanel[bgNum].add(objectLabel);
-		
+
 	}
-	
+
 	public void createArrowButton(int bgNum, int x, int y, int width, int height, String arrowFileName, String command) {
-		
-		ImageIcon arrowIcon = new ImageIcon(getClass().getClassLoader().getResource(arrowFileName));
-		
-		JButton arrowButton = new JButton();
-		arrowButton.setBounds(x, y, width, height);
-		arrowButton.setBackground(null);
-		arrowButton.setContentAreaFilled(false);
-		arrowButton.setFocusPainted(false);
-		arrowButton.setIcon(arrowIcon);
-		arrowButton.addActionListener(gm.aHandler);
-		arrowButton.setActionCommand(command);
-		arrowButton.setBorderPainted(false);
-		
-		bgPanel[bgNum].add(arrowButton);
+	    ImageIcon arrowIcon = new ImageIcon(getClass().getClassLoader().getResource(arrowFileName));
+
+	    JButton arrowButton = new JButton();
+	    arrowButton.setBounds(x, y, width, height);
+	    arrowButton.setBackground(null);
+	    arrowButton.setContentAreaFilled(false);
+	    arrowButton.setFocusPainted(false);
+	    arrowButton.setIcon(arrowIcon);
+	    arrowButton.addActionListener(gm.aHandler);
+	    arrowButton.setActionCommand(command);
+	    arrowButton.setBorderPainted(false);
+
+	    // Initially, set the button icon to null (invisible)
+	    arrowButton.setIcon(null);
+
+	    arrowButton.addMouseListener(new MouseAdapter() {
+	        @Override
+	        public void mouseEntered(MouseEvent e) {
+	            // Set the icon to make the button visible
+	            arrowButton.setIcon(arrowIcon);
+	        }
+
+	        @Override
+	        public void mouseExited(MouseEvent e) {
+	            // Set the icon to null to make the button invisible
+	            arrowButton.setIcon(null);
+	        }
+	    });
+
+	    bgPanel[bgNum].add(arrowButton);
 	}
+
 
 	public void generateScreen() {
 
 		//SCENE 1
 		createBackground(1,"Hall1.png");
 		createObject(1,0,0,50,39,"", "Placeholder", "Placeholder", "Placeholder", "Placeholder1", "Placeholder2", "Placeholder3");
-		createArrowButton(1,140,200,50,39,"LeftArrow-Hall1.png","goScene2");
+		createArrowButton(1,140,215,50,39,"LeftArrow-Hall1.png","goScene2");
+		createArrowButton(1,370,150,50,39,"LeftArrow-Hall1.png","");
 		bgPanel[1].add(bgLabel[1]);
-		
+
 		//SCENE 2
 		createBackground(2,"Room1-View1.png");
 		createArrowButton(2,310,300,50,39,"BackArrow-Room1.png","goScene1");
