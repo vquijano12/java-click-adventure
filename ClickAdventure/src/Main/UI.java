@@ -1,8 +1,8 @@
 package Main;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -123,38 +123,98 @@ public class UI {
 
 	}
 
-	public void createArrowButton(int bgNum, int x, int y, int width, int height, String arrowFileName, String command) {
-		ImageIcon arrowIcon = new ImageIcon(getClass().getClassLoader().getResource(arrowFileName));
+	public void createViewChangeButton(int bgNum, int x, int y, int width, int height, String buttonFileName, String command) {
+		ImageIcon viewChangeIcon = new ImageIcon(getClass().getClassLoader().getResource(buttonFileName));
 
-		JButton arrowButton = new JButton();
-		arrowButton.setBounds(x, y, width, height);
-		arrowButton.setBackground(null);
-		arrowButton.setContentAreaFilled(false);
-		arrowButton.setFocusPainted(false);
-		arrowButton.setIcon(arrowIcon);
-		arrowButton.addActionListener(gm.aHandler);
-		arrowButton.setActionCommand(command);
-		arrowButton.setBorderPainted(false);
-
-		// Initially, set the button icon to null (invisible)
-		arrowButton.setIcon(null);
-
-		arrowButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				// Set the icon to make the button visible
-				arrowButton.setIcon(arrowIcon);
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-				// Set the icon to null to make the button invisible
-				arrowButton.setIcon(null);
-			}
-		});
-
-		bgPanel[bgNum].add(arrowButton);
+		JButton viewChangeButton = new JButton();
+		viewChangeButton.setBounds(x, y, width, height);
+		viewChangeButton.setBackground(null);
+		viewChangeButton.setContentAreaFilled(false);
+		viewChangeButton.setFocusPainted(false);
+		viewChangeButton.setIcon(viewChangeIcon);
+		viewChangeButton.addActionListener(gm.aHandler);
+		viewChangeButton.setActionCommand(command);
+		viewChangeButton.setBorderPainted(false);
+		bgPanel[bgNum].add(viewChangeButton);
 	}
+	
+	public void createArrowButton(int bgNum, int x, int y, int width, int height, String arrowFileName, String command, int newWidth, int newHeight) {
+	    ImageIcon arrowIcon = new ImageIcon(getClass().getClassLoader().getResource(arrowFileName));
+
+	    Image originalImage = arrowIcon.getImage();
+
+	    Image scaledImage = originalImage.getScaledInstance(newWidth, newHeight, Image.SCALE_SMOOTH);
+
+	    JButton arrowButton = new JButton();
+	    arrowButton.setBounds(x, y, width, height);
+	    arrowButton.setBackground(null);
+	    arrowButton.setContentAreaFilled(false);
+	    arrowButton.setFocusPainted(false);
+
+	    // Set the initial icon to the scaled image
+	    arrowButton.setIcon(new ImageIcon(scaledImage));
+
+	    arrowButton.addActionListener(gm.aHandler);
+	    arrowButton.setActionCommand(command);
+	    arrowButton.setBorderPainted(false);
+	    
+	    arrowButton.setIcon(null);
+
+	    arrowButton.addMouseListener(new MouseAdapter() {
+	        @Override
+	        public void mouseEntered(MouseEvent e) {
+	            // Set the icon to make the button visible
+	            arrowButton.setIcon(new ImageIcon(scaledImage));
+	        }
+
+	        @Override
+	        public void mouseExited(MouseEvent e) {
+	            arrowButton.setIcon(null);
+	        }
+	    });
+
+	    bgPanel[bgNum].add(arrowButton);
+	}
+
+
+//	public void createArrowButton(int bgNum, int x, int y, int width, int height, String arrowFileName, String command, 
+//			int newWidth, int newHeight) {
+//
+//		ImageIcon arrowIcon = new ImageIcon(getClass().getClassLoader().getResource(arrowFileName));
+//
+//		Image originalImage = arrowIcon.getImage();
+//
+//		Image scaledImage = originalImage.getScaledInstance(newWidth, newHeight,  Image.SCALE_SMOOTH);
+//
+//		JButton arrowButton = new JButton();
+//		arrowButton.setBounds(x, y, width, height);
+//		arrowButton.setBackground(null);
+//		arrowButton.setContentAreaFilled(false);
+//		arrowButton.setFocusPainted(false);
+//		arrowButton.setIcon(new ImageIcon(scaledImage));
+//		arrowButton.addActionListener(gm.aHandler);
+//		arrowButton.setActionCommand(command);
+//		arrowButton.setBorderPainted(false);
+//
+//		// Initially, set the button icon to null (invisible)
+//		arrowButton.setIcon(null);
+//
+//		arrowButton.addMouseListener(new MouseAdapter() {
+//			@Override
+//			public void mouseEntered(MouseEvent e) {
+//				// Set the icon to make the button visible
+//				arrowButton.setIcon(arrowIcon);
+//			}
+//
+//			@Override
+//			public void mouseExited(MouseEvent e) {
+//				// Set the icon to null to make the button invisible
+//				arrowButton.setIcon(null);
+//			}
+//		});
+//
+//		bgPanel[bgNum].add(arrowButton);
+//	}
 
 
 	public void generateScreen() {
@@ -162,14 +222,20 @@ public class UI {
 		//SCENE 1
 		createBackground(1,"Hall1.png");
 		createObject(1,0,0,50,39,"", "Placeholder", "Placeholder", "Placeholder", "Placeholder1", "Placeholder2", "Placeholder3");
-		createArrowButton(1,140,215,50,39,"LeftArrow-Hall1.png","goScene2");
-		createArrowButton(1,370,150,50,39,"LeftArrow-Hall1.png","");
+		createArrowButton(1,140,215,100,100,"LeftArrow-Hall1.png","goScene2", 100,60);
+		createArrowButton(1,370,150,50,39,"LeftArrow-Hall1.png","",50,35);
 		bgPanel[1].add(bgLabel[1]);
 
 		//SCENE 2
 		createBackground(2,"Room1-View1.png");
-		createArrowButton(2,310,300,50,39,"BackArrow-Room1.png","goScene1");
+		createArrowButton(2,310,300,50,39,"BackArrow-Room1.png","goScene1",50,39);
+		createViewChangeButton(2,600,20,50,50,"SwitchViewArrow.png","goScene3");
 		bgPanel[2].add(bgLabel[2]);
+
+		//SCENE 3
+		createBackground(3,"Room1-View2.png");
+		createViewChangeButton(3,600,20,50,50,"SwitchViewArrow.png","goScene2");
+		bgPanel[3].add(bgLabel[3]);
 	}
 
 }

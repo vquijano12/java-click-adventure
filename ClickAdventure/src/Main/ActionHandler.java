@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 public class ActionHandler implements ActionListener{
 	
 	GameManager gm;
-	
+
 	public ActionHandler(GameManager gm) {
 		
 		this.gm = gm;
@@ -23,6 +23,7 @@ public class ActionHandler implements ActionListener{
 		//CHANGE SCENES
 		case "goScene1": gm.sChanger.showScene1(); break;
 		case "goScene2": gm.sChanger.showScene2(); break;
+		case "goScene3": gm.sChanger.showScene3(); break;
 		}
 	}
 
