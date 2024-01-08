@@ -60,7 +60,7 @@ public class UI {
 		bgPanel[bgNum].setBounds(50,50,700,350);
 		bgPanel[bgNum].setBackground(Color.blue);
 		bgPanel[bgNum].setLayout(null);
-		window.add(bgPanel[1]);
+		window.add(bgPanel[bgNum]);
 
 		bgLabel[bgNum] = new JLabel();
 		bgLabel[bgNum].setBounds(0,0,700,350);
@@ -145,6 +145,11 @@ public class UI {
 		createObject(1,0,0,50,39,"", "Placeholder", "Placeholder", "Placeholder", "Placeholder1", "Placeholder2", "Placeholder3");
 		createArrowButton(1,140,200,50,39,"LeftArrow-Hall1.png","goScene2");
 		bgPanel[1].add(bgLabel[1]);
+		
+		//SCENE 2
+		createBackground(2,"Room1-View1.png");
+		createArrowButton(2,310,300,50,39,"BackArrow-Room1.png","goScene1");
+		bgPanel[2].add(bgLabel[2]);
 	}
 
 }
