@@ -1,6 +1,7 @@
 package Main;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -123,36 +124,36 @@ public class UI {
 	}
 
 	public void createArrowButton(int bgNum, int x, int y, int width, int height, String arrowFileName, String command) {
-	    ImageIcon arrowIcon = new ImageIcon(getClass().getClassLoader().getResource(arrowFileName));
+		ImageIcon arrowIcon = new ImageIcon(getClass().getClassLoader().getResource(arrowFileName));
 
-	    JButton arrowButton = new JButton();
-	    arrowButton.setBounds(x, y, width, height);
-	    arrowButton.setBackground(null);
-	    arrowButton.setContentAreaFilled(false);
-	    arrowButton.setFocusPainted(false);
-	    arrowButton.setIcon(arrowIcon);
-	    arrowButton.addActionListener(gm.aHandler);
-	    arrowButton.setActionCommand(command);
-	    arrowButton.setBorderPainted(false);
+		JButton arrowButton = new JButton();
+		arrowButton.setBounds(x, y, width, height);
+		arrowButton.setBackground(null);
+		arrowButton.setContentAreaFilled(false);
+		arrowButton.setFocusPainted(false);
+		arrowButton.setIcon(arrowIcon);
+		arrowButton.addActionListener(gm.aHandler);
+		arrowButton.setActionCommand(command);
+		arrowButton.setBorderPainted(false);
 
-	    // Initially, set the button icon to null (invisible)
-	    arrowButton.setIcon(null);
+		// Initially, set the button icon to null (invisible)
+		arrowButton.setIcon(null);
 
-	    arrowButton.addMouseListener(new MouseAdapter() {
-	        @Override
-	        public void mouseEntered(MouseEvent e) {
-	            // Set the icon to make the button visible
-	            arrowButton.setIcon(arrowIcon);
-	        }
+		arrowButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// Set the icon to make the button visible
+				arrowButton.setIcon(arrowIcon);
+			}
 
-	        @Override
-	        public void mouseExited(MouseEvent e) {
-	            // Set the icon to null to make the button invisible
-	            arrowButton.setIcon(null);
-	        }
-	    });
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// Set the icon to null to make the button invisible
+				arrowButton.setIcon(null);
+			}
+		});
 
-	    bgPanel[bgNum].add(arrowButton);
+		bgPanel[bgNum].add(arrowButton);
 	}
 
 
