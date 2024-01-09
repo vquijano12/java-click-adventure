@@ -11,6 +11,18 @@ public class Event01 {
 		this.gm = gm;
 	}
 	
+	public void lookCorner() {
+		gm.ui.messageText.setText("Hmmm...");
+	}
+	
+	public void examineCorner() {
+		gm.ui.messageText.setText("What's that? It looks like something hidden behind the bookcase.");
+	}
+	
+	public void nothingCorner() {
+		gm.ui.messageText.setText(".....");
+	}
+	
 	public void lookBookcase() {
 		gm.ui.messageText.setText("Nice lookin' bookcase, I guess.");
 	}

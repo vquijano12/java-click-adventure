@@ -98,6 +98,9 @@ public class UI {
 		//CREATE OBJECTS
 		JLabel objectLabel = new JLabel();
 		objectLabel.setBounds(objx,objy,objWidth,objHeight);
+		//Check bounds of objects
+		objectLabel.setOpaque(true);
+		objectLabel.setBackground(Color.blue);
 
 		ImageIcon objectIcon = new ImageIcon(getClass().getClassLoader().getResource(objFileName));
 		objectLabel.setIcon(objectIcon);
@@ -235,7 +238,8 @@ public class UI {
 
 		//SCENE 3
 		createBackground(3,"Room1-View2.png");
-		createObject(3,340,110,160,180,"","Look","Examine","Punch","lookBookcase","examineBookcase","punchBookcase");
+		createObject(3,510,200,15,100,"","Look","Examine","Nothing","lookCorner","examineCorner","nothingCorner");
+		createObject(3,335,130,160,180,"","Look","Examine","Punch","lookBookcase","examineBookcase","punchBookcase");
 		createViewChangeButton(3,600,20,50,50,"SwitchViewArrow.png","goScene2");
 		bgPanel[3].add(bgLabel[3]);
 	}
