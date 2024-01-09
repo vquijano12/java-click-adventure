@@ -24,7 +24,7 @@ public class SceneChanger {
 		gm.ui.bgPanel[3].setVisible(false);
 		gm.ui.bgPanel[4].setVisible(false);
 	}
-	
+
 	public void showScene3() { 
 
 		gm.ui.bgPanel[1].setVisible(false);
@@ -32,7 +32,7 @@ public class SceneChanger {
 		gm.ui.bgPanel[3].setVisible(true);
 		gm.ui.bgPanel[4].setVisible(false);
 	}
-	
+
 	public void showScene4() { 
 
 		gm.ui.bgPanel[1].setVisible(false);

@@ -80,7 +80,6 @@ public class UI {
 		//CREATE POP MENU
 		JPopupMenu popMenu = new JPopupMenu();
 		//CREATE POP MENU ITEMS
-		
 		menuItem[1] = new JMenuItem(choice1Name);
 		menuItem[1].addActionListener(gm.aHandler);
 		menuItem[1].setActionCommand(choice1Command);
