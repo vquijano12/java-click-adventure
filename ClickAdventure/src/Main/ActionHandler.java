@@ -19,7 +19,7 @@ public class ActionHandler implements ActionListener{
 		switch(yourChoice) {
 		case "lookBookcase": gm.ev1.lookBookcase(); break;
 		case "examineBookcase": gm.ev1.examineBookcase(); break;
-		case "punchBookcase": gm.ev1.punchBookcase(); break;
+		case "punchBookcase": gm.ev1.pushOrPunchBookcase(); break;
 		}
 		switch(yourChoice) {
 		case "lookCorner": gm.ev1.lookCorner(); break;
@@ -30,6 +30,7 @@ public class ActionHandler implements ActionListener{
 		case "goScene1": gm.sChanger.showScene1(); break;
 		case "goScene2": gm.sChanger.showScene2(); break;
 		case "goScene3": gm.sChanger.showScene3(); break;
+		case "goScene4": gm.sChanger.showScene4(); break;
 		}
 	}
 }

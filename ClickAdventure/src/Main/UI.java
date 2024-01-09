@@ -25,6 +25,7 @@ public class UI {
 	public JTextArea messageText;
 	public JPanel bgPanel[] = new JPanel[10];
 	public JLabel bgLabel[] = new JLabel[10];
+	public JMenuItem menuItem[] = new JMenuItem[4];
 
 	public UI(GameManager gm) {
 
@@ -79,7 +80,7 @@ public class UI {
 		//CREATE POP MENU
 		JPopupMenu popMenu = new JPopupMenu();
 		//CREATE POP MENU ITEMS
-		JMenuItem menuItem[] = new JMenuItem[4];
+		
 		menuItem[1] = new JMenuItem(choice1Name);
 		menuItem[1].addActionListener(gm.aHandler);
 		menuItem[1].setActionCommand(choice1Command);
@@ -99,8 +100,8 @@ public class UI {
 		JLabel objectLabel = new JLabel();
 		objectLabel.setBounds(objx,objy,objWidth,objHeight);
 		//Check bounds of objects
-		objectLabel.setOpaque(true);
-		objectLabel.setBackground(Color.blue);
+//		objectLabel.setOpaque(true);
+//		objectLabel.setBackground(Color.blue);
 
 		ImageIcon objectIcon = new ImageIcon(getClass().getClassLoader().getResource(objFileName));
 		objectLabel.setIcon(objectIcon);
@@ -242,6 +243,11 @@ public class UI {
 		createObject(3,335,130,160,180,"","Look","Examine","Punch","lookBookcase","examineBookcase","punchBookcase");
 		createViewChangeButton(3,600,20,50,50,"SwitchViewArrow.png","goScene2");
 		bgPanel[3].add(bgLabel[3]);
+		
+		//SCENE 4
+		createBackground(4,"HiddenSpace.png");
+		createViewChangeButton(4,600,20,50,50,"SwitchViewArrow.png","goScene2");
+		bgPanel[4].add(bgLabel[4]);
 	}
 
 }
