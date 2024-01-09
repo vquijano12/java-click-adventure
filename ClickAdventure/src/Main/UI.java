@@ -2,6 +2,7 @@ package Main;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -26,6 +27,13 @@ public class UI {
 	public JPanel bgPanel[] = new JPanel[10];
 	public JLabel bgLabel[] = new JLabel[10];
 	public JMenuItem menuItem[] = new JMenuItem[4];
+	
+	//PLAYER UI
+	JPanel lifePanel;
+	JLabel lifeLabel[] = new JLabel[6];
+	JPanel inventoryPanel;
+	public JLabel weaponLabel;
+	
 
 	public UI(GameManager gm) {
 
@@ -33,6 +41,8 @@ public class UI {
 
 		createMainField();
 
+		createPlayerField();
+		
 		generateScreen();
 
 		window.setVisible(true);
@@ -179,6 +189,41 @@ public class UI {
 	    });
 
 	    bgPanel[bgNum].add(arrowButton);
+	}
+	
+	public void createPlayerField() {
+		
+		lifePanel = new JPanel();
+		lifePanel.setBounds(50, 20, 250, 50);
+		lifePanel.setBackground(null);
+		lifePanel.setLayout(new GridLayout(1,5));
+		window.add(lifePanel);
+		
+		ImageIcon lifeIcon = new ImageIcon(getClass().getClassLoader().getResource("PixelHeart.png"));
+		Image image = lifeIcon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
+		lifeIcon = new ImageIcon(image);
+		
+		int i=1;
+		while(i<6) {
+			lifeLabel[i] = new JLabel();
+			lifeLabel[i].setIcon(lifeIcon);
+			lifePanel.add(lifeLabel[i]);
+			i++;
+		}
+		
+		inventoryPanel = new JPanel();
+		inventoryPanel.setBounds(650, 20, 100, 50);
+		inventoryPanel.setBackground(null);
+		inventoryPanel.setLayout(new GridLayout(1,2));
+		window.add(inventoryPanel);
+		
+		//CREATE ITEMS
+		weaponLabel = new JLabel();
+		ImageIcon weaponIcon = new ImageIcon(getClass().getClassLoader().getResource("Dagger.png"));
+		image = weaponIcon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
+		weaponIcon = new ImageIcon(image);
+		weaponLabel.setIcon(weaponIcon);
+		inventoryPanel.add(weaponLabel);
 	}
 
 //	public void createArrowButton(int bgNum, int x, int y, int width, int height, String arrowFileName, String command, 

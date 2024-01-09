@@ -38,7 +38,13 @@ public class Event01 {
 			gm.sChanger.showScene4();
 		} else {
 			gm.ui.messageText.setText("OUCH!! That's one tough bookcase, better be careful.");
-		}
+			gm.player.playerLife--;
+			gm.player.updatePlayerStatus();
+			
+			if(gm.player.playerLife==0) {
+				gm.ui.messageText.setText("Wow... I can't believe you died from punching a bookcase so many times.");
+			}
+		} 
 	}
 
 	private void updateChoices() {
