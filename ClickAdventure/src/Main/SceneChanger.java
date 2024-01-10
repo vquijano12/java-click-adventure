@@ -46,6 +46,7 @@ public class SceneChanger {
 		gm.ui.bgPanel[2].setVisible(true);
 		gm.ui.bgPanel[3].setVisible(false);
 		gm.ui.bgPanel[4].setVisible(false);
+		gm.ui.messageText.setText("");
 	}
 
 	public void showScene3() { 
