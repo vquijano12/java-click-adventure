@@ -36,6 +36,9 @@ public class Event01 {
 		if (cornerExamined) {
 			gm.ui.messageText.setText("Impressive! You moved the bookcase.");
 			gm.sChanger.showScene4();
+			
+			gm.ui.updateViewChangeButtonActionCommand(2,"goScene4");
+			
 		} else {
 			gm.ui.messageText.setText("OUCH!! That's one tough bookcase, better be careful.");
 			gm.player.playerLife--;

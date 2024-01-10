@@ -1,6 +1,7 @@
 package Main;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
@@ -27,6 +28,7 @@ public class UI {
 	public JPanel bgPanel[] = new JPanel[10];
 	public JLabel bgLabel[] = new JLabel[10];
 	public JMenuItem menuItem[] = new JMenuItem[4];
+	private JButton viewChangeButton;
 
 	//PLAYER UI
 	JPanel lifePanel;
@@ -152,7 +154,7 @@ public class UI {
 	public void createViewChangeButton(int bgNum, int x, int y, int width, int height, String buttonFileName, String command) {
 		ImageIcon viewChangeIcon = new ImageIcon(getClass().getClassLoader().getResource(buttonFileName));
 
-		JButton viewChangeButton = new JButton();
+		viewChangeButton = new JButton();
 		viewChangeButton.setBounds(x, y, width, height);
 		viewChangeButton.setBackground(null);
 		viewChangeButton.setContentAreaFilled(false);
@@ -162,6 +164,19 @@ public class UI {
 		viewChangeButton.setActionCommand(command);
 		viewChangeButton.setBorderPainted(false);
 		bgPanel[bgNum].add(viewChangeButton);
+	}
+	
+	public void updateViewChangeButtonActionCommand(int bgNum, String actionCommand) {
+	    if (bgNum >= 0 && bgNum < bgPanel.length) {
+	        for (Component component : bgPanel[bgNum].getComponents()) {
+	            if (component instanceof JButton) {
+	                JButton button = (JButton) component;
+	                if (button.getActionCommand().equals("goScene3")) {
+	                    button.setActionCommand(actionCommand);
+	                }
+	            }
+	        }
+	    }
 	}
 
 	public void createArrowButton(int bgNum, int x, int y, int width, int height, String arrowFileName, String command, int newWidth) {
