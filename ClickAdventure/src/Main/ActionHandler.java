@@ -60,6 +60,13 @@ public class ActionHandler implements ActionListener {
 			gm.sChanger.exitGameOverScreen();
 			gm.sChanger.showScene1(); 
 			break;
+		case "start":
+			gm.sChanger.hideStartMenu();
+			gm.sChanger.showScene1();
+			break;
+		case "quit":
+			System.exit(0);
+			break;
 			// Add more cases as needed
 		}
 	}		

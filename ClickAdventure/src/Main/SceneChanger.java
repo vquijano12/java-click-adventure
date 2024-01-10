@@ -8,7 +8,29 @@ public class SceneChanger {
 
 		this.gm = gm;
 	}
+	
+	public void showStartMenu() {
+        // Show the start menu components
+        gm.ui.startLabel.setVisible(true);
+        gm.ui.startButton.setVisible(true);
+        gm.ui.quitButton.setVisible(true);
 
+        // Hide other components
+        gm.ui.bgPanel[1].setVisible(false);
+        gm.ui.bgPanel[2].setVisible(false);
+        gm.ui.bgPanel[3].setVisible(false);
+        gm.ui.bgPanel[4].setVisible(false);
+        gm.ui.titleLabel.setVisible(false);
+        gm.ui.restartButton.setVisible(false);
+    }
+	
+	public void hideStartMenu() {
+        // Hide the start menu components
+		gm.ui.startLabel.setVisible(false);
+		gm.ui.startButton.setVisible(false);
+		gm.ui.quitButton.setVisible(false);
+    }
+	
 	public void showScene1() { 
 
 		gm.ui.bgPanel[1].setVisible(true);

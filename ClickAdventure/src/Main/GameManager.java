@@ -20,6 +20,6 @@ public class GameManager {
 	public GameManager() {
 
 		player.setPlayerDefaultStatus();
-		sChanger.showScene3();
+		sChanger.showStartMenu();
 	}
 }

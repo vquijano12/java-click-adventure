@@ -18,7 +18,7 @@ public class Player {
 	public void setPlayerDefaultStatus() {
 		
 		playerMaxLife = 5;
-		playerLife = 3;
+		playerLife = 5;
 		hasWeapon = false;
 		
 		updatePlayerStatus();
