@@ -15,6 +15,7 @@ public class SceneChanger {
 		gm.ui.bgPanel[2].setVisible(false);
 		gm.ui.bgPanel[3].setVisible(false);
 		gm.ui.bgPanel[4].setVisible(false);
+		gm.ui.messageText.setText("");
 	}
 
 	public void showScene2() { 
@@ -39,5 +40,21 @@ public class SceneChanger {
 		gm.ui.bgPanel[2].setVisible(false);
 		gm.ui.bgPanel[3].setVisible(false);
 		gm.ui.bgPanel[4].setVisible(true);
+	}
+	
+	public void showGameOverScreen(int currentBgNum) {
+		
+		gm.ui.bgPanel[currentBgNum].setVisible(false);
+		gm.ui.titleLabel.setVisible(true);
+		gm.ui.titleLabel.setText("YOU DIED...");
+		gm.ui.restartButton.setVisible(true);
+		gm.ui.restartButton.setText("Click to restart");
+	}
+	
+	public void exitGameOverScreen() {
+		
+		gm.ui.titleLabel.setVisible(false);
+		gm.ui.restartButton.setVisible(false);
+		gm.player.setPlayerDefaultStatus();
 	}
 }

@@ -43,6 +43,7 @@ public class Event01 {
 			
 			if(gm.player.playerLife==0) {
 				gm.ui.messageText.setText("Wow... I can't believe you died from punching a bookcase so many times.");
+				gm.sChanger.showGameOverScreen(3);
 			}
 		} 
 	}

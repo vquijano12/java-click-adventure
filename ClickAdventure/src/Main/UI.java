@@ -34,6 +34,9 @@ public class UI {
 	JPanel inventoryPanel;
 	public JLabel weaponLabel;
 	
+	//GAME OVER UI
+	public JLabel titleLabel;
+	JButton restartButton;
 
 	public UI(GameManager gm) {
 
@@ -42,6 +45,8 @@ public class UI {
 		createMainField();
 
 		createPlayerField();
+		
+		createGameOverField();
 		
 		generateScreen();
 
@@ -71,7 +76,8 @@ public class UI {
 
 		bgPanel[bgNum] = new JPanel();
 		bgPanel[bgNum].setBounds(50,50,700,350);
-		bgPanel[bgNum].setBackground(Color.blue);
+		bgPanel[bgNum].setBackground(Color.black);
+		bgPanel[bgNum].setVisible(false);
 		bgPanel[bgNum].setLayout(null);
 		window.add(bgPanel[bgNum]);
 
@@ -225,6 +231,27 @@ public class UI {
 		weaponLabel.setIcon(weaponIcon);
 		inventoryPanel.add(weaponLabel);
 	}
+	
+	public void createGameOverField() {
+		
+		titleLabel = new JLabel("", JLabel.CENTER);
+		titleLabel.setBounds(200, 150, 400, 200);
+		titleLabel.setForeground(Color.red);
+		titleLabel.setFont(new Font("Times New Roman", Font.PLAIN, 70));
+		titleLabel.setVisible(false);
+		window.add(titleLabel);
+		
+		restartButton = new JButton();
+		restartButton.setBounds(340, 300, 120, 50);
+		restartButton.setBorder(null);
+		restartButton.setBackground(null);
+		restartButton.setForeground(Color.white);
+		restartButton.setFocusPainted(false);
+		restartButton.addActionListener(gm.aHandler);
+		restartButton.setActionCommand("restart");
+		restartButton.setVisible(false);
+		window.add(restartButton);
+	}
 
 //	public void createArrowButton(int bgNum, int x, int y, int width, int height, String arrowFileName, String command, 
 //			int newWidth, int newHeight) {
@@ -267,7 +294,9 @@ public class UI {
 
 
 	public void generateScreen() {
-
+		
+		//START MENU
+		
 		//SCENE 1
 		createBackground(1,"Hall1.png");
 //		createObject(1,0,0,50,39,"", "Choice1", "Choice2", "Choice3", "Response1", "Repsonse2", "Response3");

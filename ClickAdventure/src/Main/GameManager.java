@@ -20,6 +20,6 @@ public class GameManager {
 	public GameManager() {
 
 		player.setPlayerDefaultStatus();
-		sChanger.showScene1();
+		sChanger.showScene3();
 	}
 }
