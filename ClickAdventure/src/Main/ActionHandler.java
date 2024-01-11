@@ -26,9 +26,10 @@ public class ActionHandler implements ActionListener {
 		case "examineBookcase":
 			gm.ev1.examineBookcase();
 			break;
-		case "punchBookcase":
+		case "pushOrPunchBookcase":
 			gm.ev1.pushOrPunchBookcase();
 			break;
+			//CORNER
 		case "lookCorner":
 			gm.ev1.lookCorner();
 			break;
@@ -37,6 +38,16 @@ public class ActionHandler implements ActionListener {
 			break;
 		case "nothingCorner":
 			gm.ev1.nothingCorner();
+			break;
+			//DAGGER
+		case "lookDagger":
+			gm.ev2.lookDagger();
+			break;
+		case "examineDagger":
+			gm.ev2.examineDagger();
+			break;
+		case "takeDagger":
+			gm.ev2.takeDagger();
 			break;
 			// Add more cases as needed
 		}

@@ -8,7 +8,6 @@ import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -28,6 +27,7 @@ public class UI {
 	public JPanel bgPanel[] = new JPanel[10];
 	public JLabel bgLabel[] = new JLabel[10];
 	public JMenuItem menuItem[] = new JMenuItem[4];
+	public JMenuItem menuItem1[] = new JMenuItem[4];
 	private JButton viewChangeButton;
 
 	//PLAYER UI
@@ -39,7 +39,7 @@ public class UI {
 	//GAME OVER UI
 	public JLabel titleLabel;
 	JButton restartButton;
-	
+
 	//START MENU UI
 	public JLabel startLabel;
 	JButton startButton;
@@ -50,13 +50,9 @@ public class UI {
 		this.gm = gm;
 
 		createMainField();
-
 		createPlayerField();
-
 		createGameOverField();
-		
 		createStartMenu();
-
 		generateScreen();
 
 		window.setVisible(true);
@@ -95,8 +91,6 @@ public class UI {
 
 		ImageIcon bgIcon = new ImageIcon(getClass().getClassLoader().getResource(bgFileName));
 		bgLabel[bgNum].setIcon(bgIcon);
-
-
 	}
 
 	public void createObject(int bgNum, int objx, int objy, int objWidth, int objHeight, String objFileName,
@@ -148,7 +142,57 @@ public class UI {
 		});
 
 		bgPanel[bgNum].add(objectLabel);
+		bgPanel[bgNum].add(bgLabel[bgNum]);
+	}
 
+	public void createDaggerObject(int bgNum, int objx, int objy, int objWidth, int objHeight, String objFileName,
+			String choice1Name, String choice2Name, String choice3Name, String choice1Command, String choice2Command, String choice3Command) {
+
+		//CREATE POP MENU
+		JPopupMenu popMenu = new JPopupMenu();
+		//CREATE POP MENU ITEMS
+		menuItem1[1] = new JMenuItem(choice1Name);
+		menuItem1[1].addActionListener(gm.aHandler);
+		menuItem1[1].setActionCommand(choice1Command);
+		popMenu.add(menuItem1[1]);
+
+		menuItem1[2] = new JMenuItem(choice2Name);
+		menuItem1[2].addActionListener(gm.aHandler);
+		menuItem1[2].setActionCommand(choice2Command);
+		popMenu.add(menuItem1[2]);
+
+		menuItem1[3] = new JMenuItem(choice3Name);
+		menuItem1[3].addActionListener(gm.aHandler);
+		menuItem1[3].setActionCommand(choice3Command);
+		popMenu.add(menuItem1[3]);
+
+		//CREATE OBJECT
+		JLabel objectLabel = new JLabel();
+		objectLabel.setBounds(objx,objy,objWidth,objHeight);
+		//Check bounds of objects
+		//		objectLabel.setOpaque(true);
+		//		objectLabel.setBackground(Color.blue);
+
+		ImageIcon objectIcon = new ImageIcon(getClass().getClassLoader().getResource(objFileName));
+		objectLabel.setIcon(objectIcon);
+
+		objectLabel.addMouseListener(new MouseListener() {
+
+
+			public void mouseClicked(MouseEvent e) {}
+			public void mouseEntered(MouseEvent e) {}
+			public void mouseExited(MouseEvent e) {}
+			public void mousePressed(MouseEvent e) {
+
+				if(SwingUtilities.isRightMouseButton(e)) {
+					popMenu.show(objectLabel, e.getX(), e.getY());
+				}
+			}
+
+			public void mouseReleased(MouseEvent e) {}
+		});
+
+		bgPanel[bgNum].add(objectLabel);
 	}
 
 	public void createViewChangeButton(int bgNum, int x, int y, int width, int height, String buttonFileName, String command) {
@@ -165,18 +209,18 @@ public class UI {
 		viewChangeButton.setBorderPainted(false);
 		bgPanel[bgNum].add(viewChangeButton);
 	}
-	
+
 	public void updateViewChangeButtonActionCommand(int bgNum, String actionCommand) {
-	    if (bgNum >= 0 && bgNum < bgPanel.length) {
-	        for (Component component : bgPanel[bgNum].getComponents()) {
-	            if (component instanceof JButton) {
-	                JButton button = (JButton) component;
-	                if (button.getActionCommand().equals("goScene3")) {
-	                    button.setActionCommand(actionCommand);
-	                }
-	            }
-	        }
-	    }
+		if (bgNum >= 0 && bgNum < bgPanel.length) {
+			for (Component component : bgPanel[bgNum].getComponents()) {
+				if (component instanceof JButton) {
+					JButton button = (JButton) component;
+					if (button.getActionCommand().equals("goScene3")) {
+						button.setActionCommand(actionCommand);
+					}
+				}
+			}
+		}
 	}
 
 	public void createArrowButton(int bgNum, int x, int y, int width, int height, String arrowFileName, String command, int newWidth) {
@@ -240,14 +284,14 @@ public class UI {
 		}
 
 		inventoryPanel = new JPanel();
-		inventoryPanel.setBounds(650, 20, 100, 50);
+		inventoryPanel.setBounds(30, 85, 50, 100);
 		inventoryPanel.setBackground(null);
-		inventoryPanel.setLayout(new GridLayout(1,2));
+		inventoryPanel.setLayout(new GridLayout(2,1));
 		window.add(inventoryPanel);
 
 		//CREATE ITEMS
 		weaponLabel = new JLabel();
-		ImageIcon weaponIcon = new ImageIcon(getClass().getClassLoader().getResource("Dagger.png"));
+		ImageIcon weaponIcon = new ImageIcon(getClass().getClassLoader().getResource("DaggerIcon.png"));
 		image = weaponIcon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
 		weaponIcon = new ImageIcon(image);
 		weaponLabel.setIcon(weaponIcon);
@@ -275,91 +319,48 @@ public class UI {
 		restartButton.setVisible(false);
 		window.add(restartButton);
 	}
-	
+
 	public void createStartMenu() {
-	    // Start Label
-	    startLabel = new JLabel("", JLabel.CENTER);
-	    startLabel.setBounds(200, 100, 400, 100);
-	    startLabel.setVisible(false);
-	    startLabel.setForeground(Color.white);
-	    startLabel.setFont(new Font("Times New Roman", Font.PLAIN, 40));
-	    window.add(startLabel);
+		// Start Label
+		startLabel = new JLabel("", JLabel.CENTER);
+		startLabel.setBounds(200, 100, 400, 100);
+		startLabel.setVisible(false);
+		startLabel.setForeground(Color.white);
+		startLabel.setFont(new Font("Times New Roman", Font.PLAIN, 40));
+		window.add(startLabel);
 
-	    // Start Button
-	    startButton = new JButton("Start");
-	    startButton.setBounds(340, 230, 120, 40);
-	    startButton.setVisible(false);
-//	    startButton.setBorder(null);
-	    startButton.setFont(new Font("Times New Roman", Font.PLAIN, 30));
-	    startButton.setBackground(Color.black);
-	    startButton.setForeground(Color.white);
-	    startButton.setFocusPainted(false);
-	    startButton.addActionListener(gm.aHandler);
-	    startButton.setActionCommand("start");
-	    window.add(startButton);
+		// Start Button
+		startButton = new JButton("Start");
+		startButton.setBounds(340, 230, 120, 40);
+		startButton.setVisible(false);
+		startButton.setFont(new Font("Times New Roman", Font.PLAIN, 30));
+		startButton.setBackground(Color.black);
+		startButton.setForeground(Color.white);
+		startButton.setFocusPainted(false);
+		startButton.addActionListener(gm.aHandler);
+		startButton.setActionCommand("start");
+		window.add(startButton);
 
-	    // Quit Game Button
-	    quitButton = new JButton("Quit Game");
-	    quitButton.setBounds(310, 280, 180, 40);
-	    quitButton.setVisible(false);
-//	    quitButton.setBorder(null);
-	    quitButton.setFont(new Font("Times New Roman", Font.PLAIN, 30));
-	    quitButton.setBackground(null);
-	    quitButton.setForeground(Color.white);
-	    quitButton.setFocusPainted(false);
-	    quitButton.addActionListener(gm.aHandler);
-	    quitButton.setActionCommand("quit");
-	    window.add(quitButton);
+		// Quit Game Button
+		quitButton = new JButton("Quit Game");
+		quitButton.setBounds(310, 280, 180, 40);
+		quitButton.setVisible(false);
+		quitButton.setFont(new Font("Times New Roman", Font.PLAIN, 30));
+		quitButton.setBackground(null);
+		quitButton.setForeground(Color.white);
+		quitButton.setFocusPainted(false);
+		quitButton.addActionListener(gm.aHandler);
+		quitButton.setActionCommand("quit");
+		window.add(quitButton);
 	}
-
-	//	public void createArrowButton(int bgNum, int x, int y, int width, int height, String arrowFileName, String command, 
-	//			int newWidth, int newHeight) {
-	//
-	//		ImageIcon arrowIcon = new ImageIcon(getClass().getClassLoader().getResource(arrowFileName));
-	//
-	//		Image originalImage = arrowIcon.getImage();
-	//
-	//		Image scaledImage = originalImage.getScaledInstance(newWidth, newHeight,  Image.SCALE_SMOOTH);
-	//
-	//		JButton arrowButton = new JButton();
-	//		arrowButton.setBounds(x, y, width, height);
-	//		arrowButton.setBackground(null);
-	//		arrowButton.setContentAreaFilled(false);
-	//		arrowButton.setFocusPainted(false);
-	//		arrowButton.setIcon(new ImageIcon(scaledImage));
-	//		arrowButton.addActionListener(gm.aHandler);
-	//		arrowButton.setActionCommand(command);
-	//		arrowButton.setBorderPainted(false);
-	//
-	//		// Initially, set the button icon to null (invisible)
-	//		arrowButton.setIcon(null);
-	//
-	//		arrowButton.addMouseListener(new MouseAdapter() {
-	//			@Override
-	//			public void mouseEntered(MouseEvent e) {
-	//				// Set the icon to make the button visible
-	//				arrowButton.setIcon(arrowIcon);
-	//			}
-	//
-	//			@Override
-	//			public void mouseExited(MouseEvent e) {
-	//				// Set the icon to null to make the button invisible
-	//				arrowButton.setIcon(null);
-	//			}
-	//		});
-	//
-	//		bgPanel[bgNum].add(arrowButton);
-	//	}
-
 
 	public void generateScreen() {
 
 		//START MENU
 		createStartMenu();
-		
 		//SCENE 1
 		createBackground(1,"Hall1.png");
-		//		createObject(1,0,0,50,39,"", "Choice1", "Choice2", "Choice3", "Response1", "Repsonse2", "Response3");
+		createObject(1,0,0,100,100,"", "Choice1", "Choice2", "Choice3", "Response1", "Repsonse2", "Response3");
 		createArrowButton(1,140,190,100,100,"LeftArrow-Hall1.png","goScene2",70);
 		createArrowButton(1,370,146,50,39,"LeftArrow-Hall1.png","",39);
 		bgPanel[1].add(bgLabel[1]);
@@ -373,12 +374,13 @@ public class UI {
 		//SCENE 3
 		createBackground(3,"Room1-View2.png");
 		createObject(3,510,200,15,100,"","Look","Examine","Nothing","lookCorner","examineCorner","nothingCorner");
-		createObject(3,335,130,160,180,"","Look","Examine","Punch","lookBookcase","examineBookcase","punchBookcase");
+		createObject(3,335,130,160,180,"","Look","Examine","Punch","lookBookcase","examineBookcase","pushOrPunchBookcase");
 		createViewChangeButton(3,600,20,50,50,"SwitchViewArrow.png","goScene2");
 		bgPanel[3].add(bgLabel[3]);
 
 		//SCENE 4
 		createBackground(4,"HiddenSpace.png");
+		createDaggerObject(4, 438, 250, 59, 19, "Dagger.png","Look", "Examine", "Take", "lookDagger", "examineDagger", "takeDagger");
 		createViewChangeButton(4,600,20,50,50,"SwitchViewArrow.png","goScene2");
 		bgPanel[4].add(bgLabel[4]);
 	}
