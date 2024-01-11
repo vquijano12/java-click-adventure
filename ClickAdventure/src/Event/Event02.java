@@ -9,13 +9,13 @@ public class Event02 {
 		this.gm = gm;
 	}
 
-	public void lookDagger() {
-		gm.ui.messageText.setText("");
-	}
+//	public void lookDagger() {
+//		gm.ui.messageText.setText("");
+//	}
 
-	public void examineDagger() {
-		gm.ui.messageText.setText("");
-	}
+//	public void examineDagger() {
+//		gm.ui.messageText.setText("");
+//	}
 
 	public void takeDagger() {
 		gm.ui.messageText.setText("You took the dagger.");
@@ -25,8 +25,6 @@ public class Event02 {
 	}
 
 	private void hideDaggerObject() {
-		// Assuming the dagger object is added to the UI as a JLabel
-		// Update the index and the visibility accordingly
-		gm.ui.bgPanel[4].getComponent(0).setVisible(false); // Assuming the dagger is the first component in bgPanel[4]
+		gm.ui.bgPanel[4].getComponent(0).setVisible(false);
 	}
 }

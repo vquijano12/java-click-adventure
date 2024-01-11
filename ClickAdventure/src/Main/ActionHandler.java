@@ -40,12 +40,12 @@ public class ActionHandler implements ActionListener {
 			gm.ev1.nothingCorner();
 			break;
 			//DAGGER
-		case "lookDagger":
-			gm.ev2.lookDagger();
-			break;
-		case "examineDagger":
-			gm.ev2.examineDagger();
-			break;
+//		case "lookDagger":
+//			gm.ev2.lookDagger();
+//			break;
+//		case "examineDagger":
+//			gm.ev2.examineDagger();
+//			break;
 		case "takeDagger":
 			gm.ev2.takeDagger();
 			break;
