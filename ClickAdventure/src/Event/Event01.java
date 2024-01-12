@@ -4,7 +4,7 @@ import Main.GameManager;
 
 public class Event01 {
 	GameManager gm;
-	boolean cornerExamined = false;
+	public boolean cornerExamined = false;
 
 	public Event01(GameManager gm) {
 		this.gm = gm;

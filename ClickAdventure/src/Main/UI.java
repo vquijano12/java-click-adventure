@@ -194,6 +194,57 @@ public class UI {
 
 			bgPanel[bgNum].add(objectLabel);
 		}
+	
+	public void createMonsterObject(int bgNum, int objx, int objy, int objWidth, int objHeight, String objFileName,
+			String choice1Name,  String choice1Command ) {
+//		 String choice2Name, String choice3Name, String choice2Command, String choice3Command) {
+
+			//CREATE POP MENU
+			JPopupMenu popMenu = new JPopupMenu();
+			//CREATE POP MENU ITEMS
+			menuItem1[1] = new JMenuItem(choice1Name);
+			menuItem1[1].addActionListener(gm.aHandler);
+			menuItem1[1].setActionCommand(choice1Command);
+			popMenu.add(menuItem1[1]);
+
+//			menuItem1[2] = new JMenuItem(choice2Name);
+//			menuItem1[2].addActionListener(gm.aHandler);
+//			menuItem1[2].setActionCommand(choice2Command);
+//			popMenu.add(menuItem1[2]);
+//
+//			menuItem1[3] = new JMenuItem(choice3Name);
+//			menuItem1[3].addActionListener(gm.aHandler);
+//			menuItem1[3].setActionCommand(choice3Command);
+//			popMenu.add(menuItem1[3]);
+
+			//CREATE OBJECT
+			JLabel objectLabel = new JLabel();
+			objectLabel.setBounds(objx,objy,objWidth,objHeight);
+			//Check bounds of objects
+			objectLabel.setOpaque(true);
+			objectLabel.setBackground(Color.blue);
+
+			ImageIcon objectIcon = new ImageIcon(getClass().getClassLoader().getResource(objFileName));
+			objectLabel.setIcon(objectIcon);
+
+			objectLabel.addMouseListener(new MouseListener() {
+
+
+				public void mouseClicked(MouseEvent e) {}
+				public void mouseEntered(MouseEvent e) {}
+				public void mouseExited(MouseEvent e) {}
+				public void mousePressed(MouseEvent e) {
+
+					if(SwingUtilities.isRightMouseButton(e)) {
+						popMenu.show(objectLabel, e.getX(), e.getY());
+					}
+				}
+
+				public void mouseReleased(MouseEvent e) {}
+			});
+
+			bgPanel[bgNum].add(objectLabel);
+		}
 
 		public void createViewChangeButton(int bgNum, int x, int y, int width, int height, String buttonFileName, String command) {
 			ImageIcon viewChangeIcon = new ImageIcon(getClass().getClassLoader().getResource(buttonFileName));
@@ -221,6 +272,17 @@ public class UI {
 					}
 				}
 			}
+		}
+		
+		public void resetViewChangeButtonActionCommand(int bgNum, String actionCommand) {
+		    if (bgNum >= 0 && bgNum < bgPanel.length) {
+		        for (Component component : bgPanel[bgNum].getComponents()) {
+		            if (component instanceof JButton) {
+		                JButton button = (JButton) component;
+		                button.setActionCommand(actionCommand);
+		            }
+		        }
+		    }
 		}
 
 		public void createArrowButton(int bgNum, int x, int y, int width, int height, String arrowFileName, String command, int newWidth) {
@@ -362,7 +424,8 @@ public class UI {
 			createBackground(1,"Hall1.png");
 			createObject(1,0,0,100,100,"", "Choice1", "Choice2", "Choice3", "Response1", "Repsonse2", "Response3");
 			createArrowButton(1,140,190,100,100,"LeftArrow-Hall1.png","goScene2",70);
-			createArrowButton(1,370,146,50,39,"LeftArrow-Hall1.png","",39);
+			createArrowButton(1,370,146,50,39,"LeftArrow-Hall1.png","goScene5",39);
+			createArrowButton(1,484,110,42,31,"ForwardArrow-Hall1.png","goScene6",37);
 			bgPanel[1].add(bgLabel[1]);
 
 			//SCENE 2
@@ -384,6 +447,17 @@ public class UI {
 //			"Look", "Examine","lookDagger", "examineDagger", );
 			createViewChangeButton(4,600,20,50,50,"SwitchViewArrow.png","goScene2");
 			bgPanel[4].add(bgLabel[4]);
+			
+			//SCENE 5
+			createBackground(5,"Room2.png");
+			createArrowButton(5,320,300,50,39,"BackArrow-Room2.png","goScene1",50);
+			bgPanel[5].add(bgLabel[5]);
+			
+			//SCENE 6 - "FINAL SCENE"
+			createBackground(6,"");
+			createArrowButton(6,320,300,50,39,"BackArrow-Room2.png","goScene1",50);
+			createMonsterObject(6,300,100,100,100,"","Attack","attackMonster");
+			bgPanel[6].add(bgLabel[6]);
 		}
 
 	}

@@ -29,7 +29,7 @@ public class ActionHandler implements ActionListener {
 		case "pushOrPunchBookcase":
 			gm.ev1.pushOrPunchBookcase();
 			break;
-			//CORNER
+		//CORNER
 		case "lookCorner":
 			gm.ev1.lookCorner();
 			break;
@@ -39,7 +39,7 @@ public class ActionHandler implements ActionListener {
 		case "nothingCorner":
 			gm.ev1.nothingCorner();
 			break;
-			//DAGGER
+		//DAGGER
 //		case "lookDagger":
 //			gm.ev2.lookDagger();
 //			break;
@@ -48,6 +48,10 @@ public class ActionHandler implements ActionListener {
 //			break;
 		case "takeDagger":
 			gm.ev2.takeDagger();
+			break;
+		//MONSTER
+		case "attackMonster":
+			gm.ev3.attackMonster();
 			break;
 			// Add more cases as needed
 		}
@@ -70,6 +74,12 @@ public class ActionHandler implements ActionListener {
 		case "restart":
 			gm.sChanger.exitGameOverScreen();
 			gm.sChanger.showScene1(); 
+			break;
+		case "goScene5":
+			gm.sChanger.showScene5();
+			break;
+		case "goScene6":
+			gm.sChanger.showScene6();
 			break;
 		case "start":
 			gm.sChanger.hideStartMenu();

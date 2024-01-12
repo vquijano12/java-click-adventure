@@ -4,11 +4,17 @@ public class Player {
 
 	GameManager gm;
 
-	//Variables for player life
-	public int playerMaxLife;
-	public int playerLife;
-	//Variables for items
+	//PLAYER STATUS
+	public int playerMaxLife = 5;
+	public int playerLife = 5;
+	public int playerStrength = 3;
+	public int playerEndurance = 1;
+	public int playerAttack;
+	public int playerDefense;
+	
 	public boolean hasWeapon;
+	public int weaponPower;
+	public boolean defeatAbomination = false;
 
 	public Player(GameManager gm) {
 
@@ -19,8 +25,12 @@ public class Player {
 
 		playerMaxLife = 5;
 		playerLife = 5;
+		playerStrength = 3;
+		playerEndurance = 1;
 		hasWeapon = false;
-
+		weaponPower = 0;
+		
+		defeatAbomination = false;
 		updatePlayerStatus();
 	}
 
@@ -38,6 +48,8 @@ public class Player {
 			gm.ui.lifeLabel[lifeCount].setVisible(true);
 			lifeCount--;
 		}
+		playerAttack = playerStrength + weaponPower;
+		playerDefense = playerEndurance;
 
 		//CHECK PLAYER ITEMS
 		if(hasWeapon == false) {

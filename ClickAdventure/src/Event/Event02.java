@@ -22,6 +22,8 @@ public class Event02 {
 		gm.ui.weaponLabel.setVisible(true);
 
 		hideDaggerObject();
+		
+	    gm.player.hasWeapon = true;
 	}
 
 	private void hideDaggerObject() {
