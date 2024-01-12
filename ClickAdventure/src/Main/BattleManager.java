@@ -44,7 +44,7 @@ public class BattleManager {
 				monsterDamage = 0;
 			}
 			gm.player.playerLife -= monsterDamage;
-			gm.ui.messageText.append("\nThe" + monster.monsterName + " attacks you and deals " + monsterDamage + " damage!");
+			gm.ui.messageText.append("\nThe " + monster.monsterName + " attacks you and deals " + monsterDamage + " damage!");
 			if(gm.player.playerLife < 1) {
 				gm.player.playerLife = 0;
 				gm.player.updatePlayerStatus();

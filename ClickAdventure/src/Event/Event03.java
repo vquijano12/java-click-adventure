@@ -18,6 +18,7 @@ public class Event03 {
 	        hideMonsterObject();
 	    } else {
 	        gm.bm.setMonster();
+	        gm.ui.bgPanel[6].getComponent(0).setVisible(false);
 	    }
 	}
 	

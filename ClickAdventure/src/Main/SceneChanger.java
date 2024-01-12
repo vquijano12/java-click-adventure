@@ -96,7 +96,7 @@ public class SceneChanger {
 		gm.ui.bgPanel[4].setVisible(false);
 		gm.ui.bgPanel[5].setVisible(false);
 		gm.ui.bgPanel[6].setVisible(true);
-		gm.ui.messageText.setText("");
+		gm.ui.messageText.setText("An abomination has appeared!");
 	}
 
 	public void showGameOverScreen(int currentBgNum) {
