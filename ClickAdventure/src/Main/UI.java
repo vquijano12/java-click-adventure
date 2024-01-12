@@ -275,14 +275,16 @@ public class UI {
 		}
 		
 		public void resetViewChangeButtonActionCommand(int bgNum, String actionCommand) {
-		    if (bgNum >= 0 && bgNum < bgPanel.length) {
-		        for (Component component : bgPanel[bgNum].getComponents()) {
-		            if (component instanceof JButton) {
-		                JButton button = (JButton) component;
-		                button.setActionCommand(actionCommand);
-		            }
-		        }
-		    }
+			if (bgNum >= 0 && bgNum < bgPanel.length) {
+				for (Component component : bgPanel[bgNum].getComponents()) {
+					if (component instanceof JButton) {
+						JButton button = (JButton) component;
+						if (button.getActionCommand().equals("goScene4")) {
+							button.setActionCommand(actionCommand);
+						}
+					}
+				}
+			}
 		}
 
 		public void createArrowButton(int bgNum, int x, int y, int width, int height, String arrowFileName, String command, int newWidth) {

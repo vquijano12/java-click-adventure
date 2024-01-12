@@ -28,7 +28,7 @@ public class Player {
 		playerStrength = 3;
 		playerEndurance = 1;
 		hasWeapon = false;
-		weaponPower = 0;
+		weaponPower = 1;
 		
 		defeatAbomination = false;
 		updatePlayerStatus();

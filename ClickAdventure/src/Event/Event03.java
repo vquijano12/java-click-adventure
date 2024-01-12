@@ -22,7 +22,7 @@ public class Event03 {
 	}
 	
 	private void hideMonsterObject() {
-		gm.ui.bgPanel[6].getComponent(0).setVisible(false);
+		gm.ui.bgPanel[6].getComponent(1).setVisible(false);
 	}
 
 }
