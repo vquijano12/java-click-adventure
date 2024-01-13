@@ -151,10 +151,10 @@ public class UI {
 			//CREATE POP MENU
 			JPopupMenu popMenu = new JPopupMenu();
 			//CREATE POP MENU ITEMS
-			menuItem1[1] = new JMenuItem(choice1Name);
-			menuItem1[1].addActionListener(gm.aHandler);
-			menuItem1[1].setActionCommand(choice1Command);
-			popMenu.add(menuItem1[1]);
+			menuItem[1] = new JMenuItem(choice1Name);
+			menuItem[1].addActionListener(gm.aHandler);
+			menuItem[1].setActionCommand(choice1Command);
+			popMenu.add(menuItem[1]);
 
 //			menuItem1[2] = new JMenuItem(choice2Name);
 //			menuItem1[2].addActionListener(gm.aHandler);
@@ -195,17 +195,17 @@ public class UI {
 			bgPanel[bgNum].add(objectLabel);
 		}
 	
-	public void createMonsterObject(int bgNum, int objx, int objy, int objWidth, int objHeight, String objFileName,
+	public void createEnemyObject(int bgNum, int objx, int objy, int objWidth, int objHeight, String objFileName,
 			String choice1Name,  String choice1Command ) {
 //		 String choice2Name, String choice3Name, String choice2Command, String choice3Command) {
 
 			//CREATE POP MENU
 			JPopupMenu popMenu = new JPopupMenu();
 			//CREATE POP MENU ITEMS
-			menuItem1[1] = new JMenuItem(choice1Name);
-			menuItem1[1].addActionListener(gm.aHandler);
-			menuItem1[1].setActionCommand(choice1Command);
-			popMenu.add(menuItem1[1]);
+			menuItem[1] = new JMenuItem(choice1Name);
+			menuItem[1].addActionListener(gm.aHandler);
+			menuItem[1].setActionCommand(choice1Command);
+			popMenu.add(menuItem[1]);
 
 //			menuItem1[2] = new JMenuItem(choice2Name);
 //			menuItem1[2].addActionListener(gm.aHandler);
@@ -383,6 +383,16 @@ public class UI {
 			restartButton.setVisible(false);
 			window.add(restartButton);
 		}
+		
+		public void createEndScreen() {
+			
+			titleLabel = new JLabel("", JLabel.CENTER);
+			titleLabel.setBounds(200, 150, 400, 200);
+			titleLabel.setForeground(Color.white);
+			titleLabel.setFont(new Font("Times New Roman", Font.PLAIN, 70));
+			titleLabel.setVisible(false);
+			window.add(titleLabel);
+		}
 
 		public void createStartMenu() {
 			// Start Label
@@ -458,7 +468,8 @@ public class UI {
 			//SCENE 6 - "FINAL SCENE"
 			createBackground(6,"ChainsRoom.png");
 			createArrowButton(6,320,300,50,39,"BackArrow-Room2.png","goScene1",50);
-			createMonsterObject(6,185,75,290,260,"ChainedSoul.png","Attack","attackMonster");
+			createArrowButton(6,320,200,70,37,"ForwardArrow_FinalRoom.png","end",70);
+			createEnemyObject(6,185,50,290,260,"ChainedSoul.png","Attack","attackMonster");
 			bgPanel[6].add(bgLabel[6]);
 		}
 

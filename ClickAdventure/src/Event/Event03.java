@@ -13,17 +13,19 @@ public class Event03 {
 	
 	public void attackEnemy() {
 	    if (!gm.player.hasWeapon) {
-	        gm.ui.messageText.setText("You can't challenge the monster without a weapon!");
+	        gm.ui.messageText.setText("You can't challenge the enemy without a weapon!");
 	    } else if (gm.player.defeatChainedSoul) {
-	        hideEntityObject();
+	        hideEnemyObject();
+	        gm.ui.messageText.setText("The enemy has been vanquished!");
+	        gm.ui.bgPanel[6].getComponent(1).setVisible(true);
 	    } else {
-	        gm.bm.setEntity();
+	        gm.bm.setEnemy();
 	        gm.ui.bgPanel[6].getComponent(0).setVisible(false);
 	    }
 	}
 	
-	private void hideEntityObject() {
-		gm.ui.bgPanel[6].getComponent(1).setVisible(false);
+	private void hideEnemyObject() {
+		gm.ui.bgPanel[6].getComponent(2).setVisible(false);
 	}
 
 }

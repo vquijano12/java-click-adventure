@@ -17,12 +17,12 @@ public class BattleManager {
 		this.gm = gm;
 	}
 
-	public void resetEntityLife() {
+	public void resetEnemyLife() {
 
 		chainedSoul.entityLife = chainedSoul.entityMaxLife;
 	}
 
-	public void setEntity() {
+	public void setEnemy() {
 		entity = chainedSoul;
 		attack();
 	}
@@ -57,7 +57,8 @@ public class BattleManager {
 
 	public void win() {
 
-		gm.ui.messageText.append("\nYou have defeated the enemy!");
+		gm.ui.messageText.setText("You have defeated the enemy!");
+		gm.ui.menuItem[1].setText("Vanquish");
 
 		if(entity == chainedSoul) {
 			gm.player.defeatChainedSoul = true;

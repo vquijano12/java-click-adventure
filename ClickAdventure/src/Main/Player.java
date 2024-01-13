@@ -5,13 +5,13 @@ public class Player {
 	GameManager gm;
 
 	//PLAYER STATUS
-	public int playerMaxLife = 5;
-	public int playerLife = 5;
-	public int playerStrength = 3;
-	public int playerEndurance = 1;
+	public int playerMaxLife;
+	public int playerLife;
+	public int playerStrength;
+	public int playerEndurance;
 	public int playerAttack;
 	public int playerDefense;
-	
+
 	public boolean hasWeapon;
 	public int weaponPower;
 	public boolean defeatChainedSoul = false;
@@ -25,11 +25,11 @@ public class Player {
 
 		playerMaxLife = 5;
 		playerLife = 5;
-		playerStrength = 3;
+		playerStrength = 100;
 		playerEndurance = 1;
 		hasWeapon = false;
 		weaponPower = 2;
-		
+
 		defeatChainedSoul = false;
 		updatePlayerStatus();
 	}

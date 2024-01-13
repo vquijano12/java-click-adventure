@@ -73,7 +73,7 @@ public class ActionHandler implements ActionListener {
 			break;
 		case "restart":
 			gm.sChanger.exitGameOverScreen();
-			gm.sChanger.showScene1();
+			gm.sChanger.showScene1(); 
 			break;
 		case "goScene5":
 			gm.sChanger.showScene5();
@@ -88,7 +88,10 @@ public class ActionHandler implements ActionListener {
 		case "quit":
 			System.exit(0);
 			break;
+		case "end":
+			gm.sChanger.showEndScreen(6);
+			break;
 			// Add more cases as needed
 		}
-	}
+	}		
 }

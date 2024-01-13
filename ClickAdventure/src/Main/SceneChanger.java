@@ -1,5 +1,7 @@
 package Main;
 
+import java.awt.Color;
+
 public class SceneChanger {
 
 	GameManager gm;
@@ -34,7 +36,7 @@ public class SceneChanger {
 		gm.ui.quitButton.setVisible(false);
 	}
 
-	public void showScene1() { 
+	public void showScene1() {
 
 		gm.ui.bgPanel[1].setVisible(true);
 		gm.ui.bgPanel[2].setVisible(false);
@@ -46,7 +48,7 @@ public class SceneChanger {
 		gm.ui.messageText.setText("");
 	}
 
-	public void showScene2() { 
+	public void showScene2() {
 
 		gm.ui.bgPanel[1].setVisible(false);
 		gm.ui.bgPanel[2].setVisible(true);
@@ -57,7 +59,7 @@ public class SceneChanger {
 		gm.ui.messageText.setText("");
 	}
 
-	public void showScene3() { 
+	public void showScene3() {
 
 		gm.ui.bgPanel[1].setVisible(false);
 		gm.ui.bgPanel[2].setVisible(false);
@@ -67,7 +69,7 @@ public class SceneChanger {
 		gm.ui.bgPanel[6].setVisible(false);
 	}
 
-	public void showScene4() { 
+	public void showScene4() {
 
 		gm.ui.bgPanel[1].setVisible(false);
 		gm.ui.bgPanel[2].setVisible(false);
@@ -76,8 +78,8 @@ public class SceneChanger {
 		gm.ui.bgPanel[5].setVisible(false);
 		gm.ui.bgPanel[6].setVisible(false);
 	}
-	
-	public void showScene5() { 
+
+	public void showScene5() {
 
 		gm.ui.bgPanel[1].setVisible(false);
 		gm.ui.bgPanel[2].setVisible(false);
@@ -87,8 +89,8 @@ public class SceneChanger {
 		gm.ui.bgPanel[6].setVisible(false);
 		gm.ui.messageText.setText("");
 	}
-	
-	public void showScene6() { 
+
+	public void showScene6() {
 
 		gm.ui.bgPanel[1].setVisible(false);
 		gm.ui.bgPanel[2].setVisible(false);
@@ -96,7 +98,8 @@ public class SceneChanger {
 		gm.ui.bgPanel[4].setVisible(false);
 		gm.ui.bgPanel[5].setVisible(false);
 		gm.ui.bgPanel[6].setVisible(true);
-		gm.ui.messageText.setText("A \"Chained Soul\" has appeared!");
+		gm.ui.messageText.setText("A \"Chained Soul\" has appeared! Prepare yourself!");
+		gm.ui.bgPanel[6].getComponent(1).setVisible(false);
 	}
 
 	public void showGameOverScreen(int currentBgNum) {
@@ -107,7 +110,7 @@ public class SceneChanger {
 		gm.ui.restartButton.setVisible(true);
 		gm.ui.restartButton.setText("Click to restart");
 		resetGame();
-		gm.bm.resetEntityLife();
+		gm.bm.resetEnemyLife();
 		gm.ui.bgPanel[6].getComponent(0).setVisible(true);
 	}
 
@@ -117,7 +120,17 @@ public class SceneChanger {
 		gm.ui.restartButton.setVisible(false);
 		gm.player.setPlayerDefaultStatus();
 	}
-	
+
+	public void showEndScreen(int currentBgNum) {
+
+		gm.ui.bgPanel[currentBgNum].setVisible(false);
+		gm.ui.titleLabel.setVisible(true);
+		gm.ui.titleLabel.setText("**End**");
+		gm.ui.titleLabel.setForeground(Color.white);
+		gm.ui.messageText.setText("Thank you for playing!!");
+		resetGame();
+	}
+
 	public void resetGame() {
 	    // Reset player status
 	    gm.player.setPlayerDefaultStatus();
@@ -132,7 +145,7 @@ public class SceneChanger {
 	    // Reset UI components
 	    gm.ui.weaponLabel.setVisible(false);
 	    gm.ui.lifePanel.setVisible(false);
-	    
+
 
 	    // Reset scene-specific UI components
 	    gm.ui.resetViewChangeButtonActionCommand(2, "goScene3"); // Reset viewChangeButton command in scene2
@@ -140,7 +153,7 @@ public class SceneChanger {
 
 	    // Add more reset logic as needed
 	}
-	
+
 	private void showDaggerObject() {
 		gm.ui.bgPanel[4].getComponent(0).setVisible(true);
 	}
