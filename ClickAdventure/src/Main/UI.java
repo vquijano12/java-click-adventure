@@ -218,16 +218,16 @@ public class UI {
 //			popMenu.add(menuItem1[3]);
 
 			//CREATE OBJECT
-			JLabel objectLabel = new JLabel();
-			objectLabel.setBounds(objx,objy,objWidth,objHeight);
+			JLabel enemyLabel = new JLabel();
+			enemyLabel.setBounds(objx,objy,objWidth,objHeight);
 			//Check bounds of objects
-			objectLabel.setOpaque(true);
-			objectLabel.setBackground(Color.blue);
+//			objectLabel.setOpaque(true);
+//			objectLabel.setBackground(Color.blue);
 
 			ImageIcon objectIcon = new ImageIcon(getClass().getClassLoader().getResource(objFileName));
-			objectLabel.setIcon(objectIcon);
+			enemyLabel.setIcon(objectIcon);
 
-			objectLabel.addMouseListener(new MouseListener() {
+			enemyLabel.addMouseListener(new MouseListener() {
 
 
 				public void mouseClicked(MouseEvent e) {}
@@ -236,14 +236,14 @@ public class UI {
 				public void mousePressed(MouseEvent e) {
 
 					if(SwingUtilities.isRightMouseButton(e)) {
-						popMenu.show(objectLabel, e.getX(), e.getY());
+						popMenu.show(enemyLabel, e.getX(), e.getY());
 					}
 				}
 
 				public void mouseReleased(MouseEvent e) {}
 			});
 
-			bgPanel[bgNum].add(objectLabel);
+			bgPanel[bgNum].add(enemyLabel);
 		}
 
 		public void createViewChangeButton(int bgNum, int x, int y, int width, int height, String buttonFileName, String command) {
@@ -456,9 +456,9 @@ public class UI {
 			bgPanel[5].add(bgLabel[5]);
 			
 			//SCENE 6 - "FINAL SCENE"
-			createBackground(6,"");
+			createBackground(6,"ChainsRoom.png");
 			createArrowButton(6,320,300,50,39,"BackArrow-Room2.png","goScene1",50);
-			createMonsterObject(6,300,100,100,100,"","Attack","attackMonster");
+			createMonsterObject(6,185,75,290,260,"ChainedSoul.png","Attack","attackMonster");
 			bgPanel[6].add(bgLabel[6]);
 		}
 

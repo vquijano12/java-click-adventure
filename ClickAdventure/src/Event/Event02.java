@@ -18,7 +18,7 @@ public class Event02 {
 //	}
 
 	public void takeDagger() {
-		gm.ui.messageText.setText("You took the dagger.");
+		gm.ui.messageText.setText("You took the magic dagger.");
 		gm.ui.weaponLabel.setVisible(true);
 
 		hideDaggerObject();

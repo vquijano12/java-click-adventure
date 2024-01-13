@@ -96,7 +96,7 @@ public class SceneChanger {
 		gm.ui.bgPanel[4].setVisible(false);
 		gm.ui.bgPanel[5].setVisible(false);
 		gm.ui.bgPanel[6].setVisible(true);
-		gm.ui.messageText.setText("An abomination has appeared!");
+		gm.ui.messageText.setText("A \"Chained Soul\" has appeared!");
 	}
 
 	public void showGameOverScreen(int currentBgNum) {
@@ -107,6 +107,8 @@ public class SceneChanger {
 		gm.ui.restartButton.setVisible(true);
 		gm.ui.restartButton.setText("Click to restart");
 		resetGame();
+		gm.bm.resetEntityLife();
+		gm.ui.bgPanel[6].getComponent(0).setVisible(true);
 	}
 
 	public void exitGameOverScreen() {

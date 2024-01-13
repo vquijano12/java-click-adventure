@@ -14,7 +14,7 @@ public class Player {
 	
 	public boolean hasWeapon;
 	public int weaponPower;
-	public boolean defeatAbomination = false;
+	public boolean defeatChainedSoul = false;
 
 	public Player(GameManager gm) {
 
@@ -30,7 +30,7 @@ public class Player {
 		hasWeapon = false;
 		weaponPower = 2;
 		
-		defeatAbomination = false;
+		defeatChainedSoul = false;
 		updatePlayerStatus();
 	}
 

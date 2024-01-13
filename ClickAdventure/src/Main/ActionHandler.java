@@ -51,7 +51,7 @@ public class ActionHandler implements ActionListener {
 			break;
 		//MONSTER
 		case "attackMonster":
-			gm.ev3.attackMonster();
+			gm.ev3.attackEnemy();
 			break;
 			// Add more cases as needed
 		}
@@ -73,7 +73,7 @@ public class ActionHandler implements ActionListener {
 			break;
 		case "restart":
 			gm.sChanger.exitGameOverScreen();
-			gm.sChanger.showScene1(); 
+			gm.sChanger.showScene1();
 			break;
 		case "goScene5":
 			gm.sChanger.showScene5();
@@ -90,5 +90,5 @@ public class ActionHandler implements ActionListener {
 			break;
 			// Add more cases as needed
 		}
-	}		
+	}
 }
