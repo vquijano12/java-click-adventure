@@ -100,6 +100,7 @@ public class SceneChanger {
 		gm.ui.bgPanel[6].setVisible(true);
 		gm.ui.messageText.setText("A \"Chained Soul\" has appeared! Prepare yourself!");
 		gm.ui.bgPanel[6].getComponent(1).setVisible(false);
+
 	}
 
 	public void showGameOverScreen(int currentBgNum) {
@@ -125,7 +126,8 @@ public class SceneChanger {
 
 		gm.ui.bgPanel[currentBgNum].setVisible(false);
 		gm.ui.titleLabel.setVisible(true);
-		gm.ui.titleLabel.setText("**End**");
+		gm.ui.titleLabel.setText("**End of Demo**");
+		gm.ui.titleLabel.setBounds(90, 150, 600, 200);
 		gm.ui.titleLabel.setForeground(Color.white);
 		gm.ui.messageText.setText("Thank you for playing!!");
 		resetGame();
