@@ -25,7 +25,7 @@ public class Player {
 
 		playerMaxLife = 5;
 		playerLife = 5;
-		playerStrength = 100;
+		playerStrength = 3;
 		playerEndurance = 1;
 		hasWeapon = false;
 		weaponPower = 2;
